@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 class SmoothFilter {
 
-    private WritableImage writableImage;
+    private final WritableImage writableImage;
 
     SmoothFilter(WritableImage writableImage) {
         this.writableImage = writableImage;

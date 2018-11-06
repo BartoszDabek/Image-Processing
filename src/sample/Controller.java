@@ -52,4 +52,9 @@ public class Controller {
     void smoothFilter() {
         new SmoothFilter(writableImage).execute();
     }
+
+    @FXML
+    void medianFilter() {
+        new MedianFilter(writableImage).execute();
+    }
 }
