@@ -17,7 +17,6 @@ public class Controller {
 
     @FXML
     private ImageView imageView;
-    private int[][][] rgbBuffer;
 
     @FXML
     void loadImage() {
@@ -39,7 +38,6 @@ public class Controller {
 
     private void setNewImage() {
         writableImage = new WritableImage((int) image.getWidth(), (int) image.getHeight());
-        rgbBuffer = new int[3][(int) image.getWidth()][(int) image.getHeight()];
         PixelReader pixelReader = image.getPixelReader();
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
@@ -52,6 +50,6 @@ public class Controller {
 
     @FXML
     void smoothFilter() {
-        new SmoothFilter(writableImage, rgbBuffer).execute();
+        new SmoothFilter(writableImage).execute();
     }
 }
