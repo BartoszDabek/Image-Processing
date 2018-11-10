@@ -23,7 +23,7 @@ public class Controller {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg"));
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             image = new Image(selectedFile.toURI().toString());
@@ -56,5 +56,10 @@ public class Controller {
     @FXML
     void medianFilter() {
         new MedianFilter(writableImage).execute();
+    }
+
+    @FXML
+    void sobelFilter() {
+        new SobelFilter(writableImage).execute();
     }
 }

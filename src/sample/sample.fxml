@@ -44,11 +44,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onAction="#smoothFilter" prefHeight="25.0" prefWidth="130.0" text="Smooth" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#reset" prefHeight="25.0" prefWidth="102.0" text="Reset" />
                   <Button mnemonicParsing="false" onAction="#medianFilter" prefHeight="25.0" prefWidth="130.0" text="Median" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#sobelFilter" prefHeight="25.0" prefWidth="130.0" text="Sobel" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
