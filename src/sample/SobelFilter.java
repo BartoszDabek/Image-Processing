@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
+import static sample.ColorHelper.getGrayScale;
+
 class SobelFilter {
 
     private final WritableImage writableImage;
@@ -68,13 +70,6 @@ class SobelFilter {
                 writableImage.getPixelWriter().setColor(i, j, Color.rgb(edgeColor, edgeColor, edgeColor));
             }
         }
-    }
-
-    private int getGrayScale(Color color) {
-        int red = (int) (color.getRed() * 255);
-        int green = (int) (color.getGreen() * 255);
-        int blue = (int) (color.getBlue() * 255);
-        return (int) (0.2126 * red + 0.7152 * green + 0.0722 * blue);
     }
 
 }

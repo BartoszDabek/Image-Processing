@@ -3,88 +3,49 @@ package sample;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
 
-class DilationFilter {
+import static sample.ColorHelper.getGrayScale;
 
-    private final WritableImage writableImage;
-    private static final int mask[][] = new int[][]{
-            {1, 1, 1},
-            {1, 1, 1},
-            {1, 1, 1}
-    };
+class DilationFilter extends MorphologicalFilter {
 
     DilationFilter(WritableImage writableImage) {
-        this.writableImage = writableImage;
+        super(writableImage);
     }
 
     void execute() {
-        for (int row = 0; row < writableImage.getWidth(); row++) {
-            for (int col = 0; col < writableImage.getHeight(); col++) {
+        int padding = (mask.length - 1) / 2;
+        int[] colorsTest;
+        int output[][] = new int[width][height];
 
-                Color color = writableImage.getPixelReader().getColor(row, col);
-                int bw = getGrayScale(color);
+        for (int row = 1; row < height - 1; row++) {
+            for (int col = 1; col < width - 1; col++) {
 
-                if (bw <= 127) {
-                    bw = 0;
-                } else {
-                    bw = 255;
-                }
+                colorsTest = new int[9];
+                int counter = 0;
+                for (int i = -padding; i <= padding; i++) {
+                    for (int j = -padding; j <= padding; j++) {
 
-                writableImage.getPixelWriter().setColor(row, col, Color.rgb(bw, bw, bw));
-            }
-        }
-
-        grayscaleImage(new int[] {1, 1, 1,
-                                  1, 1, 1,
-                                  1, 1, 1},
-                3);
-    }
-
-    private int getGrayScale(Color color) {
-        int red = (int) (color.getRed() * 255);
-        int green = (int) (color.getGreen() * 255);
-        int blue = (int) (color.getBlue() * 255);
-        return (int) (0.2126 * red + 0.7152 * green + 0.0722 * blue);
-    }
-
-    private void grayscaleImage(int mask[], int maskSize){
-        int width = (int) writableImage.getWidth();
-        int height = (int) writableImage.getHeight();
-
-        Set<Color> colors;
-        Color output[][] = new Color[width][height];
-
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                colors = new HashSet<>();
-                for(int ty = i - maskSize/2, mr = 0; ty <= i + maskSize/2; ty++, mr++){
-                    for(int tx = j - maskSize/2, mc = 0; tx <= j + maskSize/2; tx++, mc++){
-
-                        if(ty >= 0 && ty < height && tx >= 0 && tx < width){
-
-                            if(mask[mc+mr*maskSize] != 1){
-                                continue;
-                            }
-
-                            colors.add(writableImage.getPixelReader().getColor(tx, ty));
+                        if (mask[padding + i][padding + j] == 1) {
+                            int grayScale = getGrayScale(writableImage.getPixelReader().getColor(col + i, row + j));
+                            colorsTest[counter++] = grayScale;
                         }
                     }
                 }
 
-                if (colors.contains(Color.WHITE)) {
-                    output[j][i] = Color.WHITE;
-                } else {
-                    output[j][i] = Color.BLACK;
-                }
+                Arrays.sort(colorsTest);
+                output[col][row] = colorsTest[8];
             }
         }
 
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                Color color = output[j][i];
-                writableImage.getPixelWriter().setColor(j, i, color);
+        writeImage(output);
+    }
+
+    private void writeImage(int[][] output) {
+        for (int i = 1; i < height - 1; i++) {
+            for (int j = 1; j < width - 1; j++) {
+                int color = output[j][i];
+                writableImage.getPixelWriter().setColor(j, i, Color.rgb(color, color, color));
             }
         }
     }
