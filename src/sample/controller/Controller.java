@@ -11,6 +11,7 @@ import sample.filter.MedianFilter;
 import sample.filter.SmoothFilter;
 import sample.filter.SobelFilter;
 import sample.filter.morphological.DilationFilter;
+import sample.filter.morphological.ErosionFilter;
 
 import java.io.File;
 
@@ -70,5 +71,10 @@ public class Controller {
     @FXML
     void dilationFilter() {
         new DilationFilter(writableImage).execute();
+    }
+
+    @FXML
+    void erosionFilter() {
+        new ErosionFilter(writableImage).execute();
     }
 }
