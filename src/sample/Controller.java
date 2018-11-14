@@ -62,4 +62,9 @@ public class Controller {
     void sobelFilter() {
         new SobelFilter(writableImage).execute();
     }
+
+    @FXML
+    void dilationFilter() {
+        new DilationFilter(writableImage).execute();
+    }
 }
