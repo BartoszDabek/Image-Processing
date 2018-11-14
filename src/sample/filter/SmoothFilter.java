@@ -1,17 +1,17 @@
-package sample;
+package sample.filter;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-class SmoothFilter {
+public class SmoothFilter {
 
     private final WritableImage writableImage;
 
-    SmoothFilter(WritableImage writableImage) {
+    public SmoothFilter(WritableImage writableImage) {
         this.writableImage = writableImage;
     }
 
-    void execute() {
+    public void execute() {
         for (int row = 1; row < writableImage.getWidth() - 1; row++) {
             for (int col = 1; col < writableImage.getHeight() - 1; col++) {
 

@@ -1,4 +1,4 @@
-package sample;
+package sample.filter.morphological;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -6,9 +6,9 @@ import javafx.scene.paint.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-import static sample.ColorHelper.getIntFromColor;
+import static sample.util.ColorHelper.getIntFromColor;
 
-abstract class MorphologicalFilter {
+abstract class AbstractMorphological {
 
     Map<Integer, Color> map;
     private final WritableImage writableImage;
@@ -20,13 +20,13 @@ abstract class MorphologicalFilter {
             {1, 1, 1}
     };
 
-    MorphologicalFilter(WritableImage writableImage) {
+    AbstractMorphological(WritableImage writableImage) {
         this.writableImage = writableImage;
         width = (int) writableImage.getWidth();
         height = (int) writableImage.getHeight();
     }
 
-    void execute() {
+    public void execute() {
         int padding = (mask.length - 1) / 2;
         Color output[][] = new Color[width][height];
 

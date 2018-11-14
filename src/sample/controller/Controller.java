@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -7,6 +7,10 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import sample.filter.MedianFilter;
+import sample.filter.SmoothFilter;
+import sample.filter.SobelFilter;
+import sample.filter.morphological.DilationFilter;
 
 import java.io.File;
 

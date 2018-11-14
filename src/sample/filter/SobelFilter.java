@@ -1,11 +1,11 @@
-package sample;
+package sample.filter;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
-import static sample.ColorHelper.getGrayScale;
+import static sample.util.ColorHelper.getGrayScale;
 
-class SobelFilter {
+public class SobelFilter {
 
     private final WritableImage writableImage;
     private static final int gX[][] = new int[][]{
@@ -20,11 +20,11 @@ class SobelFilter {
             { 1,  2,  1}
     };
 
-    SobelFilter(WritableImage writableImage) {
+    public SobelFilter(WritableImage writableImage) {
         this.writableImage = writableImage;
     }
 
-    void execute() {
+    public void execute() {
         int[][] edgeColors = new int[(int) writableImage.getWidth()][(int) writableImage.getHeight()];
         int maxGradient = -1;
         int paddingX = (gX.length - 1) / 2;

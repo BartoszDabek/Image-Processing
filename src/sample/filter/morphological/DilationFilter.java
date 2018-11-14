@@ -1,4 +1,4 @@
-package sample;
+package sample.filter.morphological;
 
 import javafx.scene.image.WritableImage;
 
@@ -6,9 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
 
-class DilationFilter extends MorphologicalFilter {
+public class DilationFilter extends AbstractMorphological {
 
-    DilationFilter(WritableImage writableImage) {
+    public DilationFilter(WritableImage writableImage) {
         super(writableImage);
     }
 

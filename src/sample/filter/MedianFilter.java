@@ -1,4 +1,4 @@
-package sample;
+package sample.filter;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class MedianFilter {
+public class MedianFilter {
 
     private final WritableImage writableImage;
 
-    MedianFilter(WritableImage writableImage) {
+    public MedianFilter(WritableImage writableImage) {
         this.writableImage = writableImage;
     }
 
-    void execute() {
+    public void execute() {
         for (int row = 1; row < writableImage.getWidth() - 1; row++) {
             for (int col = 1; col < writableImage.getHeight() - 1; col++) {
 
