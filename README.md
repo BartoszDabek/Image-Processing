@@ -1,19 +1,10 @@
-# Repo contains implementations of basic filters
-
 ### Currently implemented filters:
-    Median
-    Smooth
-    Sobel
-    Dilation
-    Erosion
+- [x] Smooth (Average/Mean)
+- [x] Median
+- [x] Sobel
+- [x] Dilation
+- [x] Erosion
     
-### Filters to implement:
 
-    pull request your proposals here
-
-### TODO
-- [ ] split filters and ui display 
-- [ ] add basic usage information
-- [ ] add javadoc
-- [ ] add examples
-- [ ] add yt explanations
+### Exaplanation video
+- [Average filter and sample implementation in Java](https://youtu.be/W9iuMxQXrCg)
